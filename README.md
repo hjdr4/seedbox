@@ -6,7 +6,7 @@ Clone this repos
 Build: docker build -t seedbox .  
 Run: docker run --rm -P --net=host --privileged --device /dev/fuse -v \<volume\>:/root -it --name seedbox seedbox /bin/bash  
 Put your oauth_data file into \<volume\>/.cache/acd_cli/oauth_data 
-Init: /initVolume.sh
+Init: /initVolume.sh  
 Start the download suite : ~/startDownloadSuite.sh  
 
 CouchPotato:5050  
