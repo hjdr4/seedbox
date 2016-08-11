@@ -3,7 +3,7 @@ Container for running SickRage, CouchPotato and qBittorrent storing on Amazon Cl
 (ACD provides unlimited storage for $60/year actually, with good performance)
 
 Clone this repos  
-Build: docker build -t seedbox .
+Build: docker build -t seedbox .  
 Run: docker run --rm -P --net=host --privileged --device /dev/fuse -v \<volume\>:/root -it --name seedbox seedbox /bin/bash  
 Put your oauth_data file into \<volume\>/.cache/acd_cli/oauth_data 
 Init: /initVolume.sh
