@@ -11,3 +11,7 @@ debconf-set-selections <<< "postfix postfix/mailname string seedbox"
 debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
 apt-get install -y postfix
 apt-get install -y procmail
+cd ~
+git clone https://github.com/yadayada/acd_cli.git &>/dev/null
+cd acd_cli && python3 setup.py install &>/dev/null
+
