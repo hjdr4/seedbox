@@ -1,6 +1,6 @@
 #!/bin/bash
-~/remount.sh
+/root/remount.sh
 qbittorrent-nox &
-python ~/CouchPotatoServer/CouchPotato.py --daemon
-python ~/SickRage/SickBeard.py --nolaunch --daemon
+python /root/CouchPotatoServer/CouchPotato.py --daemon
+python /root/SickRage/SickBeard.py --nolaunch --daemon
 exec /bin/bash

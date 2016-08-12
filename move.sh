@@ -7,9 +7,9 @@ do
 	mv -f "$source" "$destination"
 	if [ $? -ne 0 ]
 	then 
-		~/remount.sh
+		/root/remount.sh
 	else
 		break
 	fi
-	sleep 1
+	sleep 5
 done
