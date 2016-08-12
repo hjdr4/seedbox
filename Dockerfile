@@ -6,6 +6,7 @@ ADD couchpotato_settings.conf /couchpotato_settings.conf
 ADD qBittorrent.conf /qBittorrent.conf
 ADD remount.sh /remount.sh
 ADD move.sh /move.sh
+ADD couchpotato.patch /couchpotato.patch
 ADD initVolume.sh /initVolume.sh
 add startDownloadSuite.sh /startDownloadSuite.sh
 VOLUME /root/
