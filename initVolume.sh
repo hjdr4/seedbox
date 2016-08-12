@@ -1,7 +1,6 @@
 #!/bin/bash
 cd /root
-git clone https://github.com/CouchPotato/CouchPotatoServer.git &>/dev/null
-patch /root/Couchpotato/couchpotato/core/downloaders/qbittorrent_.py < /couchpotato.patch
+git clone https://github.com/CouchPotato/CouchPotatoServer.git &>/dev/null && patch /root/Couchpotato/couchpotato/core/downloaders/qbittorrent_.py < /couchpotato.patch
 git clone https://github.com/SickRage/SickRage.git &>/dev/null
 cp -f /remount.sh /root/remount.sh
 mkdir -p /root/acd
