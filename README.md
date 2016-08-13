@@ -5,8 +5,8 @@ Container for running SickRage, CouchPotato and qBittorrent storing on Amazon Cl
 - Clone this repos : `git clone https://github.com/hjdr4/seedbox.git`
 - Build: `docker build -t seedbox`.  
 - Put your oauth_data file into `<volume>/.cache/acd_cli/oauth_data  `
-- Run: `docker run --rm -P --net=host --privileged --device /dev/fuse -v <volume>:/root -it --name seedbox seedbox /initVolume.sh`  
-- Run: `docker run --rm -P --net=host --privileged --device /dev/fuse -v <volume>:/root -itd --name seedbox seedbox /startDownloadSuite.sh` to start the apps. You can later attach to a bash waiting for you. 
+- Run: `docker run --rm -P --net=host  --cap-add SYS_ADMIN --device /dev/fuse  --security-opt apparmor:unconfined -v <volume>:/root -it --name seedbox seedbox /initVolume.sh`  
+- Run: `docker run -P --net=host  --cap-add SYS_ADMIN --device /dev/fuse  --security-opt apparmor:unconfined -v <volume>:/root -itd --name seedbox seedbox /startDownloadSuite.sh` to start the apps. You can later attach to a bash waiting for you. 
 
 ### Addresses
 - CouchPotato:5050 
