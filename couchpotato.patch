@@ -1,5 +1,5 @@
 diff --git a/couchpotato/core/downloaders/qbittorrent_.py b/couchpotato/core/downloaders/qbittorrent_.py
-index 328c784..0d8644f 100644
+index 328c784..fc3bdc3 100644
 --- a/couchpotato/core/downloaders/qbittorrent_.py
 +++ b/couchpotato/core/downloaders/qbittorrent_.py
 @@ -2,7 +2,8 @@ from base64 import b16encode, b32decode
@@ -12,17 +12,28 @@ index 328c784..0d8644f 100644
  from bencode import bencode, bdecode
  from couchpotato.core._base.downloader.main import DownloaderBase, ReleaseDownloadList
  from couchpotato.core.helpers.encoding import sp
-@@ -48,7 +49,8 @@ class qBittorrent(DownloaderBase):
+@@ -48,6 +49,7 @@ class qBittorrent(DownloaderBase):
          return self.qb._is_authenticated
 
      def download(self, data = None, media = None, filedata = None):
--        """ Send a torrent/nzb file to the downloader
 +        #print json.dumps(data)
-+       """ Send a torrent/nzb file to the downloader
+         """ Send a torrent/nzb file to the downloader
 
          :param data: dict returned from provider
-             Contains the release information
-@@ -74,14 +76,16 @@ class qBittorrent(DownloaderBase):
+@@ -62,8 +64,10 @@ class qBittorrent(DownloaderBase):
+             One faile returns false, but the downloaded should log his own errors
+         """
+
+-        if not media: media = {}
+-        if not data: data = {}
++       if not media:
++               media = {}
++        if not data:
++               data = {}
+
+         log.debug('Sending "%s" to qBittorrent.', (data.get('name')))
+
+@@ -74,14 +78,16 @@ class qBittorrent(DownloaderBase):
              log.error('Failed sending torrent, no data')
              return False
 
@@ -35,10 +46,10 @@ index 328c784..0d8644f 100644
 -
 -            data['protocol'] = 'torrent'
 +               try:
-+                      #filedata is false, but we have a magnet link, just use it
++                       #filedata is false, but we have a magnet link, just use it
 +                       filedata=data['url']
 +                       self.qb.download_from_link(filedata,label=self.conf('label'))
-+                      torrent_hash=re.search("urn:btih:(.*?)&",filedata).group(1)
++                       torrent_hash=re.search("urn:btih:(.*?)&",filedata).group(1)
 +                       return self.downloadReturnId(torrent_hash)
 +               except Exception as e:
 +                       log.error('Failed to send magnet to qBittorrent: %s', e)
