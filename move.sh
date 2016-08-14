@@ -8,6 +8,13 @@ torrentName=`basename "$source"`
 
 while true
 do
+	lockfile -r 0 /tmp/move.lock &>/dev/null
+	if [ $? -eq 0 ]; then break; fi
+	sleep 5
+done
+
+while true
+do
 	#Upload to ACD and prevent post-processor from running
 	mv -f "$source" "${destination}${torrentName}!sync"
 	if [ $? -ne 0 ]
@@ -20,3 +27,4 @@ do
 	fi
 	sleep 5
 done
+rm -f /tmp/move.lock
